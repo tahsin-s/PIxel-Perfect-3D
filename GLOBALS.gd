@@ -14,6 +14,8 @@ const pxWidth 	= 640
 const mHeight 	= 22.5
 const mWidth 	= 40.0
 
+const mOffset = Vector3(-m_px32, m_px32, 0)
+
 func m_to_px16(m_val: float):
 	return m_val * px_m16
 

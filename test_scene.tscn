@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://fe7phq81w75j"]
+[gd_scene load_steps=8 format=3 uid="uid://c7jlaupfbvlaq"]
 
 [ext_resource type="Script" path="res://Scaled objects.gd" id="1_fk8h7"]
 [ext_resource type="SpriteFrames" uid="uid://bppifyfquwse7" path="res://HunterSpriteFrames.tres" id="1_pu4nf"]
 [ext_resource type="Texture2D" uid="uid://bm6pdd5nr5c4b" path="res://img/pixelgrid.png" id="3_4t68s"]
+[ext_resource type="Shader" path="res://pixelation.gdshader" id="4_efm8s"]
+[ext_resource type="Texture2D" uid="uid://bdeuj5wy7a1d3" path="res://icon.svg" id="4_yb0aj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4v0wu"]
 size = Vector3(38, 20.5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ch56h"]
+shader = ExtResource("4_efm8s")
+shader_parameter/pixelSize = 6.0
 
 [node name="TestScene" type="Node3D"]
 
@@ -14,13 +20,12 @@ script = ExtResource("1_fk8h7")
 
 [node name="Pixel Grid" type="Sprite3D" parent="Scaled objects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, -8)
-visible = false
-pixel_size = 0.0625
+pixel_size = 0.125
 texture_filter = 2
 texture = ExtResource("3_4t68s")
 
 [node name="AnimatedSpriteXZ" type="AnimatedSprite3D" parent="Scaled objects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73971, -0.147513, 0.24895)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
 pixel_size = 0.125
 axis = 1
 texture_filter = 2
@@ -29,7 +34,7 @@ frame = 3
 frame_progress = 0.601388
 
 [node name="AnimatedSpriteXY" type="AnimatedSprite3D" parent="Scaled objects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.46509, 0.0502672, -0.378937)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 pixel_size = 0.125
 texture_filter = 2
 sprite_frames = ExtResource("1_pu4nf")
@@ -45,10 +50,18 @@ size = 22.5
 
 [node name="Pixel Grid" type="Sprite3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
-pixel_size = 0.0625
+visible = false
+pixel_size = 0.125
 texture_filter = 0
 texture = ExtResource("3_4t68s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+visible = false
 mesh = SubResource("BoxMesh_4v0wu")
+
+[node name="Icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ch56h")
+scale = Vector2(15, 8.438)
+texture = ExtResource("4_yb0aj")
+centered = false
