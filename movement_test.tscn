@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4uhalkwbowqb"]
+
+[ext_resource type="Script" path="res://Scaling_preset.gd" id="1_o7ww0"]
+[ext_resource type="Shader" path="res://pixelation.gdshader" id="2_avdps"]
+[ext_resource type="Texture2D" uid="uid://bdeuj5wy7a1d3" path="res://icon.svg" id="3_wjvi5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rnfq"]
+albedo_color = Color(0.188235, 0.454902, 0.317647, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ajmw5"]
+material = SubResource("StandardMaterial3D_5rnfq")
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tfb6"]
+albedo_color = Color(0.458824, 0.231373, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_4pqe8"]
+material = SubResource("StandardMaterial3D_8tfb6")
+left_to_right = 0.6
+size = Vector3(31, 10.048, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e4rp3"]
+shader = ExtResource("2_avdps")
+shader_parameter/pixelSize = 6.0
+
+[node name="movement_test" type="Node3D"]
+
+[node name="Scaling_preset" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -3)
+script = ExtResource("1_o7ww0")
+
+[node name="Grass" type="MeshInstance3D" parent="Scaling_preset"]
+mesh = SubResource("BoxMesh_ajmw5")
+
+[node name="Mountain" type="MeshInstance3D" parent="Scaling_preset"]
+transform = Transform3D(0.823938, 0.347322, -0.447765, 0, 0.790155, 0.612907, 0.56668, -0.504998, 0.651039, 0, 0.161514, -4.6853)
+mesh = SubResource("PrismMesh_4pqe8")
+skeleton = NodePath("../Grass")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scaling_preset"]
+transform = Transform3D(0.990002, -0.0612482, -0.127066, 0.141057, 0.429868, 0.891805, 0, -0.900812, 0.434209, 0, 0, 0)
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+projection = 1
+fov = 37.8493
+size = 22.5
+
+[node name="Pixelation" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_e4rp3")
+scale = Vector2(15, 8.438)
+texture = ExtResource("3_wjvi5")
+centered = false
