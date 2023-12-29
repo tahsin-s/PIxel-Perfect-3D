@@ -4,10 +4,28 @@ const ACCELERATION = 100.0
 const FRICTION = 10.0
 const SPEED_SCALING = Vector3.ONE / Globals.scale
 const JUMP_VELOCITY = 20.0
-const MOVING_THRESH = 0.3
+const MOVING_THRESH = 3.0
 
 # Player specific gravity value.
 var gravity = 50
+
+# Animations
+@onready var sprite: AnimatedSprite3D = $PlayerAnimation
+enum state_t {walking, attacking}
+var player_state = state_t.walking
+
+func _animate():
+	match player_state:
+		state_t.walking:
+
+			if velocity.length() > MOVING_THRESH:
+				sprite.flip_h = velocity.x < 0
+				sprite.play("walk")
+			else:
+				sprite.play("idle")
+
+		state_t.attacking:
+			pass
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -29,3 +47,5 @@ func _physics_process(delta):
 		velocity.z += direction.z * ACCELERATION * delta * SPEED_SCALING.z
 	move_and_slide()
 	position = position.snapped(Globals.snap)
+
+	_animate()
