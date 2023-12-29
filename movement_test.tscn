@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4uhalkwbowqb"]
+[gd_scene load_steps=13 format=3 uid="uid://b4uhalkwbowqb"]
 
 [ext_resource type="Script" path="res://Scaling_preset.gd" id="1_o7ww0"]
 [ext_resource type="PackedScene" uid="uid://bgo7805p8aqfj" path="res://char scenes/player_body.tscn" id="2_a075s"]
 [ext_resource type="Shader" path="res://pixelation.gdshader" id="2_avdps"]
+[ext_resource type="Script" path="res://CameraPivot.gd" id="3_ip3mu"]
 [ext_resource type="Texture2D" uid="uid://bdeuj5wy7a1d3" path="res://icon.svg" id="3_wjvi5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rnfq"]
@@ -61,8 +62,10 @@ shape = SubResource("ConcavePolygonShape3D_i6svp")
 transform = Transform3D(0.990002, -0.0612482, -0.127066, 0.141057, 0.429868, 0.891805, 0, -0.900812, 0.434209, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CameraPivot" type="Marker3D" parent="."]
+[node name="CameraPivot" type="Marker3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
+script = ExtResource("3_ip3mu")
+target = NodePath("../Scaling_preset/PlayerBody")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
