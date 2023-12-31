@@ -1,7 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://bgo7805p8aqfj"]
+[gd_scene load_steps=25 format=3 uid="uid://bgo7805p8aqfj"]
 
 [ext_resource type="Texture2D" uid="uid://b37ga853qpxgo" path="res://img/player.png" id="1_8clna"]
 [ext_resource type="Script" path="res://char scenes/player_body.gd" id="1_d85lo"]
+[ext_resource type="Script" path="res://char scenes/LandingTrace.gd" id="3_656k7"]
+[ext_resource type="Shader" path="res://char scenes/landing_trace.gdshader" id="3_o7l55"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r0n6q"]
 atlas = ExtResource("1_8clna")
@@ -136,6 +138,16 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_r8hmw"]
 size = Vector3(1.75, 2.875, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l6d6g"]
+render_priority = 0
+shader = ExtResource("3_o7l55")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0obit"]
+material = SubResource("ShaderMaterial_l6d6g")
+uv2_padding = 0.0
+size = Vector2(0.25, 1)
+center_offset = Vector3(0, -0.5, 0)
+
 [node name="PlayerBody" type="CharacterBody3D"]
 script = ExtResource("1_d85lo")
 
@@ -157,3 +169,10 @@ light_energy = 16.0
 light_negative = true
 spot_range = 80.0
 spot_angle = 3.0
+
+[node name="LandingTrace" type="MeshInstance3D" parent="." node_paths=PackedStringArray("raycast")]
+mesh = SubResource("QuadMesh_0obit")
+script = ExtResource("3_656k7")
+raycast = NodePath("../RaycastDown")
+
+[node name="RaycastDown" type="RayCast3D" parent="."]
