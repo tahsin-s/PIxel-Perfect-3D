@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://br1qosntx1osf"]
+
+[ext_resource type="Shader" path="res://models/jeep/source/scaling.gdshader" id="1_q4hyp"]
+[ext_resource type="Texture2D" uid="uid://bh2sa7j8gvbdu" path="res://models/jeep/source/model_1.png" id="2_3ca4l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_llw2p"]
+resource_local_to_scene = true
+
+[resource]
+render_priority = 0
+next_pass = SubResource("StandardMaterial3D_llw2p")
+shader = ExtResource("1_q4hyp")
+shader_parameter/uv_texture = ExtResource("2_3ca4l")
