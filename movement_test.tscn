@@ -34,7 +34,6 @@ shader_parameter/pixelSize = 6.0
 [node name="movement_test" type="Node3D"]
 
 [node name="Scaling_preset" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -3)
 script = ExtResource("1_o7ww0")
 
 [node name="PlayerBody" parent="Scaling_preset" instance=ExtResource("2_a075s")]
