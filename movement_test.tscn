@@ -79,4 +79,4 @@ texture = ExtResource("3_wjvi5")
 centered = false
 
 [node name="blockbench_export" parent="." instance=ExtResource("5_r24n5")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0, 6)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -10, 0, 6)
