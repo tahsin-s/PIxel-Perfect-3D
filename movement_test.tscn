@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4uhalkwbowqb"]
+[gd_scene load_steps=12 format=3 uid="uid://b4uhalkwbowqb"]
 
-[ext_resource type="Script" path="res://Scaling_preset.gd" id="1_o7ww0"]
 [ext_resource type="PackedScene" uid="uid://bgo7805p8aqfj" path="res://char scenes/player_body.tscn" id="2_a075s"]
 [ext_resource type="Shader" path="res://pixelation.gdshader" id="2_avdps"]
 [ext_resource type="Script" path="res://CameraPivot.gd" id="3_ip3mu"]
@@ -35,7 +34,6 @@ shader_parameter/pixelSize = 6.0
 
 [node name="Scaling_preset" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -3)
-script = ExtResource("1_o7ww0")
 
 [node name="PlayerBody" parent="Scaling_preset" instance=ExtResource("2_a075s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 4)
