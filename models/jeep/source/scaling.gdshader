@@ -1,6 +1,6 @@
 shader_type spatial;
 
-uniform sampler2D uv_texture: hint_default_black;
+uniform sampler2D uv_texture: filter_nearest_mipmap, hint_default_black;
 void vertex() {
 	VERTEX.y = VERTEX.y * 2.0;
 	VERTEX.x = VERTEX.x * 1.3;
