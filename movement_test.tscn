@@ -13,8 +13,8 @@ albedo_color = Color(0.188235, 0.454902, 0.317647, 1)
 material = SubResource("StandardMaterial3D_5rnfq")
 size = Vector3(100, 1, 100)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mnhpv"]
-data = PackedVector3Array(-50, 0.5, 50, 50, 0.5, 50, -50, -0.5, 50, 50, 0.5, 50, 50, -0.5, 50, -50, -0.5, 50, 50, 0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, 0.5, -50, -50, -0.5, -50, 50, -0.5, -50, 50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, -50, 50, -0.5, -50, 50, -0.5, 50, -50, 0.5, -50, -50, 0.5, 50, -50, -0.5, -50, -50, 0.5, 50, -50, -0.5, 50, -50, -0.5, -50, 50, 0.5, 50, -50, 0.5, 50, 50, 0.5, -50, -50, 0.5, 50, -50, 0.5, -50, 50, 0.5, -50, -50, -0.5, 50, 50, -0.5, 50, -50, -0.5, -50, 50, -0.5, 50, 50, -0.5, -50, -50, -0.5, -50)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ob8yi"]
+points = PackedVector3Array(-50, -0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, -0.5, 50, -50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, 50)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tfb6"]
 albedo_color = Color(0.458824, 0.231373, 0, 1)
@@ -24,8 +24,8 @@ material = SubResource("StandardMaterial3D_8tfb6")
 left_to_right = 0.6
 size = Vector3(31, 10.048, 10)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_i6svp"]
-data = PackedVector3Array(3.1, 5.024, 5, 15.5, -5.024, 5, -15.5, -5.024, 5, 3.1, 5.024, -5, -15.5, -5.024, -5, 15.5, -5.024, -5, 3.1, 5.024, 5, 3.1, 5.024, -5, 15.5, -5.024, 5, 3.1, 5.024, -5, 15.5, -5.024, -5, 15.5, -5.024, 5, 3.1, 5.024, -5, 3.1, 5.024, 5, -15.5, -5.024, -5, 3.1, 5.024, 5, -15.5, -5.024, 5, -15.5, -5.024, -5, -15.5, -5.024, 5, 15.5, -5.024, 5, -15.5, -5.024, -5, 15.5, -5.024, 5, 15.5, -5.024, -5, -15.5, -5.024, -5)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sxtvq"]
+points = PackedVector3Array(3.09818, 5.024, 5, 15.5, -5.024, 5, 3.09818, 5.024, -5, -15.5, -5.024, 5, 15.5, -5.024, -5, -15.5, -5.024, -5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e4rp3"]
 shader = ExtResource("2_avdps")
@@ -45,7 +45,7 @@ mesh = SubResource("BoxMesh_ajmw5")
 [node name="StaticBody3D" type="StaticBody3D" parent="Scaling_preset/Grass"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Scaling_preset/Grass/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_mnhpv")
+shape = SubResource("ConvexPolygonShape3D_ob8yi")
 
 [node name="Mountain" type="MeshInstance3D" parent="Scaling_preset"]
 transform = Transform3D(0.823938, 0.347322, -0.447765, 0, 0.790155, 0.612907, 0.56668, -0.504998, 0.651039, 0, 0.161514, -4.6853)
@@ -55,7 +55,7 @@ skeleton = NodePath("../Grass")
 [node name="StaticBody3D" type="StaticBody3D" parent="Scaling_preset/Mountain"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Scaling_preset/Mountain/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_i6svp")
+shape = SubResource("ConvexPolygonShape3D_sxtvq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scaling_preset"]
 transform = Transform3D(0.990002, -0.0612482, -0.127066, 0.141057, 0.429868, 0.891805, 0, -0.900812, 0.434209, 0, 0, 0)
