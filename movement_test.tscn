@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4uhalkwbowqb"]
+[gd_scene load_steps=13 format=3 uid="uid://b4uhalkwbowqb"]
 
 [ext_resource type="PackedScene" uid="uid://bgo7805p8aqfj" path="res://char scenes/player_body.tscn" id="2_a075s"]
 [ext_resource type="Shader" path="res://pixelation.gdshader" id="2_avdps"]
 [ext_resource type="Script" path="res://CameraPivot.gd" id="3_ip3mu"]
 [ext_resource type="Texture2D" uid="uid://bdeuj5wy7a1d3" path="res://icon.svg" id="3_wjvi5"]
+[ext_resource type="PackedScene" uid="uid://dv7agersx41t6" path="res://models/jeep/source/jeep_modified.tscn" id="5_r24n5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rnfq"]
 albedo_color = Color(0.188235, 0.454902, 0.317647, 1)
@@ -76,3 +77,6 @@ material = SubResource("ShaderMaterial_e4rp3")
 scale = Vector2(15, 8.438)
 texture = ExtResource("3_wjvi5")
 centered = false
+
+[node name="blockbench_export" parent="." instance=ExtResource("5_r24n5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0, 6)
