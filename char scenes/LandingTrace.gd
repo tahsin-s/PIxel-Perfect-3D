@@ -10,7 +10,7 @@ func _get_offset():
 	return mesh.size.y * offset_slope #+ offset_intercept
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	var gnd_dist = raycast.global_position.y - raycast.get_collision_point().y
 	gnd_dist = min(gnd_dist, Globals.mHeight)
 	gnd_dist = max(gnd_dist, 0.0)
