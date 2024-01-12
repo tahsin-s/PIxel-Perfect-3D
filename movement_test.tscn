@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scaling_preset.gd" id="1_o7ww0"]
 [ext_resource type="PackedScene" uid="uid://bgo7805p8aqfj" path="res://char scenes/player_body.tscn" id="2_a075s"]
-[ext_resource type="Shader" path="res://pixelation.gdshader" id="2_avdps"]
 [ext_resource type="Script" path="res://CameraPivot.gd" id="3_ip3mu"]
 [ext_resource type="Texture2D" uid="uid://bdeuj5wy7a1d3" path="res://icon.svg" id="3_wjvi5"]
+[ext_resource type="Shader" path="res://color_bleed.gdshader" id="7_cnq4q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rnfq"]
 albedo_color = Color(0.188235, 0.454902, 0.317647, 1)
@@ -27,9 +27,33 @@ size = Vector3(31, 10.048, 10)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sxtvq"]
 points = PackedVector3Array(3.09818, 5.024, 5, 15.5, -5.024, 5, 3.09818, 5.024, -5, -15.5, -5.024, 5, 15.5, -5.024, -5, -15.5, -5.024, -5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e4rp3"]
-shader = ExtResource("2_avdps")
-shader_parameter/pixelSize = 6.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwis8"]
+shader = ExtResource("7_cnq4q")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.19
+shader_parameter/scanlines_width = 0.073
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.0
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.161
+shader_parameter/step = Vector2(1, 0)
+shader_parameter/gaussradius_r = 0.2
+shader_parameter/gaussradius_g = 0.2
+shader_parameter/gaussradius_b = 0.2
 
 [node name="movement_test" type="Node3D"]
 
@@ -72,8 +96,8 @@ projection = 1
 fov = 37.8493
 size = 22.5
 
-[node name="Pixelation" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_e4rp3")
+[node name="Color bleed" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qwis8")
+position = Vector2(960, 540)
 scale = Vector2(15, 8.438)
 texture = ExtResource("3_wjvi5")
-centered = false
