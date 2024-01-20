@@ -14,6 +14,9 @@ var gravity = 100
 enum state_t {walking, attacking}
 var player_state = state_t.walking
 
+# Physics relevant position
+var _phys_pos: Vector3 = get_position()
+
 func _animate():
 	match player_state:
 		state_t.walking:
@@ -28,6 +31,8 @@ func _animate():
 			pass
 
 func _physics_process(delta):
+	set_position(_phys_pos)
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -46,6 +51,10 @@ func _physics_process(delta):
 		velocity.x += direction.x * ACCELERATION * delta * SPEED_SCALING.x
 		velocity.z += direction.z * ACCELERATION * delta * SPEED_SCALING.z
 	move_and_slide()
-	# position = position.snapped(Globals.snap)
-
+	
+	_phys_pos = get_position();
+	set_global_position(
+		get_global_position().snapped(Globals.snap)
+	)
+	
 	_animate()
