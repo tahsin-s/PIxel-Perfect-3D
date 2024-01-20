@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dg8mt57fuxxng"]
+[gd_scene load_steps=14 format=3 uid="uid://dg8mt57fuxxng"]
 
 [ext_resource type="Script" path="res://CameraPivot.gd" id="1_c1l2f"]
 [ext_resource type="Script" path="res://Scaling_preset.gd" id="2_kqtwt"]
 [ext_resource type="PackedScene" uid="uid://bgo7805p8aqfj" path="res://char scenes/player_body.tscn" id="3_vdyps"]
+[ext_resource type="Shader" path="res://pixelation.gdshader" id="4_4sw7b"]
+[ext_resource type="Shader" path="res://gaussian_blur.gdshader" id="5_pm6he"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rnfq"]
 albedo_color = Color(0.188235, 0.454902, 0.317647, 1)
@@ -24,6 +26,13 @@ size = Vector3(31, 10.048, 10)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ij82x"]
 points = PackedVector3Array(3.09818, 5.024, 5, 15.5, -5.024, 5, 3.09818, 5.024, -5, -15.5, -5.024, 5, 15.5, -5.024, -5, -15.5, -5.024, -5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7x7wo"]
+shader = ExtResource("4_4sw7b")
+shader_parameter/resolution = Vector2(320, 180)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3in3"]
+shader = ExtResource("5_pm6he")
 
 [node name="Layout" type="Node2D"]
 
@@ -75,3 +84,23 @@ shape = SubResource("ConvexPolygonShape3D_ij82x")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="3D Level Viewport/SubViewport/Scaling_preset"]
 transform = Transform3D(0.990002, -0.0612482, -0.127066, 0.141057, 0.429868, 0.891805, 0, -0.900812, 0.434209, 0, 0, 0)
 shadow_enabled = true
+
+[node name="Pixelation Effect" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Pixelation Effect"]
+material = SubResource("ShaderMaterial_7x7wo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gaussian" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Gaussian"]
+material = SubResource("ShaderMaterial_f3in3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

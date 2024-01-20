@@ -11,7 +11,7 @@ size = Vector3(38, 20.5, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ch56h"]
 shader = ExtResource("4_efm8s")
-shader_parameter/pixelSize = 6.0
+shader_parameter/resolution = Vector2(320, 180)
 
 [node name="TestScene" type="Node3D"]
 
