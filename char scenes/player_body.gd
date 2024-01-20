@@ -46,6 +46,6 @@ func _physics_process(delta):
 		velocity.x += direction.x * ACCELERATION * delta * SPEED_SCALING.x
 		velocity.z += direction.z * ACCELERATION * delta * SPEED_SCALING.z
 	move_and_slide()
-	position = position.snapped(Globals.snap)
+	# position = position.snapped(Globals.snap)
 
 	_animate()
