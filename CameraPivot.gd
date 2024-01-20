@@ -7,4 +7,4 @@ extends Marker3D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var newpos = target.global_position + Globals.mOffset
-	set_global_position(newpos)
+	set_global_position(newpos.snapped(Globals.snap))
