@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://dg8mt57fuxxng"]
+
+[ext_resource type="Script" path="res://CameraPivot.gd" id="1_c1l2f"]
+[ext_resource type="Script" path="res://Scaling_preset.gd" id="2_kqtwt"]
+[ext_resource type="PackedScene" uid="uid://bgo7805p8aqfj" path="res://char scenes/player_body.tscn" id="3_vdyps"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rnfq"]
+albedo_color = Color(0.188235, 0.454902, 0.317647, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j2vk7"]
+material = SubResource("StandardMaterial3D_5rnfq")
+size = Vector3(100, 1, 100)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wruvc"]
+points = PackedVector3Array(-50, -0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, -0.5, 50, -50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tfb6"]
+albedo_color = Color(0.458824, 0.231373, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_1d42o"]
+material = SubResource("StandardMaterial3D_8tfb6")
+left_to_right = 0.6
+size = Vector3(31, 10.048, 10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ij82x"]
+points = PackedVector3Array(3.09818, 5.024, 5, 15.5, -5.024, 5, 3.09818, 5.024, -5, -15.5, -5.024, 5, 15.5, -5.024, -5, -15.5, -5.024, -5)
+
+[node name="Layout" type="Node2D"]
+
+[node name="3D Level Viewport" type="SubViewportContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1078.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="3D Level Viewport"]
+handle_input_locally = false
+size = Vector2i(1920, 1078)
+render_target_update_mode = 4
+
+[node name="CameraPivot" type="Marker3D" parent="3D Level Viewport/SubViewport" node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
+script = ExtResource("1_c1l2f")
+target = NodePath("../Scaling_preset/PlayerBody")
+
+[node name="Camera3D" type="Camera3D" parent="3D Level Viewport/SubViewport/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+projection = 1
+fov = 37.8493
+size = 22.5
+
+[node name="Scaling_preset" type="Node3D" parent="3D Level Viewport/SubViewport"]
+script = ExtResource("2_kqtwt")
+
+[node name="PlayerBody" parent="3D Level Viewport/SubViewport/Scaling_preset" instance=ExtResource("3_vdyps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 4)
+
+[node name="Grass" type="MeshInstance3D" parent="3D Level Viewport/SubViewport/Scaling_preset"]
+mesh = SubResource("BoxMesh_j2vk7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="3D Level Viewport/SubViewport/Scaling_preset/Grass"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="3D Level Viewport/SubViewport/Scaling_preset/Grass/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_wruvc")
+
+[node name="Mountain" type="MeshInstance3D" parent="3D Level Viewport/SubViewport/Scaling_preset"]
+transform = Transform3D(0.823938, 0.347322, -0.447765, 0, 0.790155, 0.612907, 0.56668, -0.504998, 0.651039, 0, 0.161514, -4.6853)
+mesh = SubResource("PrismMesh_1d42o")
+skeleton = NodePath("../Grass")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="3D Level Viewport/SubViewport/Scaling_preset/Mountain"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="3D Level Viewport/SubViewport/Scaling_preset/Mountain/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ij82x")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="3D Level Viewport/SubViewport/Scaling_preset"]
+transform = Transform3D(0.990002, -0.0612482, -0.127066, 0.141057, 0.429868, 0.891805, 0, -0.900812, 0.434209, 0, 0, 0)
+shadow_enabled = true
