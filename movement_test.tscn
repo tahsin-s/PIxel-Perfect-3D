@@ -6,21 +6,21 @@
 [ext_resource type="Texture2D" uid="uid://bdeuj5wy7a1d3" path="res://icon.svg" id="3_wjvi5"]
 [ext_resource type="Shader" path="res://color_bleed.gdshader" id="7_cnq4q"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rnfq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4m4kd"]
 albedo_color = Color(0.188235, 0.454902, 0.317647, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ajmw5"]
-material = SubResource("StandardMaterial3D_5rnfq")
+material = SubResource("StandardMaterial3D_4m4kd")
 size = Vector3(100, 1, 100)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ob8yi"]
 points = PackedVector3Array(-50, -0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, -0.5, 50, -50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, 50)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tfb6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6m5c"]
 albedo_color = Color(0.458824, 0.231373, 0, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_4pqe8"]
-material = SubResource("StandardMaterial3D_8tfb6")
+material = SubResource("StandardMaterial3D_s6m5c")
 left_to_right = 0.6
 size = Vector3(31, 10.048, 10)
 
