@@ -29,12 +29,12 @@ points = PackedVector3Array(3.09818, 5.024, 5, 15.5, -5.024, 5, 3.09818, 5.024, 
 
 [node name="3D Level Viewport" type="SubViewportContainer" parent="."]
 offset_right = 1920.0
-offset_bottom = 1078.0
+offset_bottom = 1080.0
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="3D Level Viewport"]
 handle_input_locally = false
-size = Vector2i(1920, 1078)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraPivot" type="Marker3D" parent="3D Level Viewport/SubViewport" node_paths=PackedStringArray("target")]
