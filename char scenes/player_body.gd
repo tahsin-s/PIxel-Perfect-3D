@@ -3,11 +3,11 @@ extends CharacterBody3D
 const ACCELERATION = 100.0
 const FRICTION = 10.0
 const SPEED_SCALING = Vector3.ONE / Globals.scale
-const JUMP_VELOCITY = 20.0
+const JUMP_VELOCITY = 30.0
 const MOVING_THRESH = 3.0
 
 # Player specific gravity value.
-var gravity = 50
+var gravity = 100
 
 # Animations
 @onready var sprite: AnimatedSprite3D = $PlayerAnimation
