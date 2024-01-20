@@ -33,6 +33,7 @@ shader_parameter/resolution = Vector2(320, 180)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f3in3"]
 shader = ExtResource("5_pm6he")
+shader_parameter/pixel_radius = Vector3(1, 0.75, 0.5)
 
 [node name="Layout" type="Node2D"]
 
