@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dg8mt57fuxxng"]
+[gd_scene load_steps=19 format=3 uid="uid://dg8mt57fuxxng"]
 
 [ext_resource type="Script" path="res://CameraPivot.gd" id="1_c1l2f"]
 [ext_resource type="Script" path="res://Scaling_preset.gd" id="2_kqtwt"]
 [ext_resource type="PackedScene" uid="uid://bgo7805p8aqfj" path="res://char scenes/player_body.tscn" id="3_vdyps"]
 [ext_resource type="Shader" path="res://pixelation.gdshader" id="4_4sw7b"]
+[ext_resource type="Shader" path="res://dotgrid.gdshader" id="5_34o2h"]
 [ext_resource type="Shader" path="res://gaussian_blur.gdshader" id="5_pm6he"]
+[ext_resource type="Shader" path="res://scanlines.gdshader" id="6_ckrpi"]
+[ext_resource type="Script" path="res://fpscounter.gd" id="7_vx3i4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rnfq"]
 albedo_color = Color(0.188235, 0.454902, 0.317647, 1)
@@ -31,9 +34,22 @@ points = PackedVector3Array(3.09818, 5.024, 5, 15.5, -5.024, 5, 3.09818, 5.024, 
 shader = ExtResource("4_4sw7b")
 shader_parameter/resolution = Vector2(320, 180)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jfgrr"]
+shader = ExtResource("5_34o2h")
+shader_parameter/screen_res = Vector2(1920, 1080)
+shader_parameter/game_res = Vector2(320, 180)
+shader_parameter/dark_level = 0.45
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f3in3"]
 shader = ExtResource("5_pm6he")
-shader_parameter/pixel_radius = Vector3(1, 0.75, 0.5)
+shader_parameter/pixel_radius = Vector3(1, 0.7, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nj7xf"]
+shader = ExtResource("6_ckrpi")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scanline_opacity = 0.55
+shader_parameter/bloom_level = 0.5
+shader_parameter/scanline_thickness = 0.1
 
 [node name="Layout" type="Node2D"]
 
@@ -96,7 +112,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Dot Grid" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Dot Grid"]
+material = SubResource("ShaderMaterial_jfgrr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Gaussian" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Gaussian"]
 material = SubResource("ShaderMaterial_f3in3")
@@ -107,6 +134,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Gaussian2" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Gaussian2"]
 material = SubResource("ShaderMaterial_f3in3")
@@ -115,3 +143,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Scanline + Bloom" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Scanline + Bloom"]
+material = SubResource("ShaderMaterial_nj7xf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="FPS Counter" type="Label" parent="CanvasLayer2"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("7_vx3i4")
