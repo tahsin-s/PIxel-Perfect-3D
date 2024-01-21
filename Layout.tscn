@@ -38,7 +38,7 @@ shader_parameter/resolution = Vector2(320, 180)
 shader = ExtResource("5_34o2h")
 shader_parameter/screen_res = Vector2(1920, 1080)
 shader_parameter/game_res = Vector2(320, 180)
-shader_parameter/dark_level = 0.45
+shader_parameter/dark_level = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f3in3"]
 shader = ExtResource("5_pm6he")
