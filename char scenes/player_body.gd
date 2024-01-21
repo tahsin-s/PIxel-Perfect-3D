@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-const ACCELERATION = 100.0
-const FRICTION = 10.0
+const ACCELERATION = 240.0
+const FRICTION = 24.0
 const SPEED_SCALING = Vector3.ONE / Globals.scale
 const JUMP_VELOCITY = 30.0
 const MOVING_THRESH = 3.0
