@@ -5,12 +5,12 @@ uniform vec2 game_res = vec2(320, 180);
 uniform float dark_level: hint_range(0.0, 1.0, 0.05) = 0.5;
 uniform sampler2D screen_texture: hint_screen_texture, repeat_disable, filter_nearest_mipmap;
 
-const float SIN_1 = 2.0 - cosh((1.0 - 3.0) / 2.3);
-const float SIN_2 = 2.0 - cosh((2.0 - 3.0) / 2.3);
-const float SIN_3 = 2.0 - cosh((3.0 - 3.0) / 2.3);
-const float SIN_4 = 2.0 - cosh((4.0 - 3.0) / 2.3);
-const float SIN_5 = 2.0 - cosh((5.0 - 3.0) / 2.3);
-const float SIN_0 = 2.0 - cosh((6.0 - 3.0) / 2.3);
+const float SIN_1 = 2.0 - cos((1.0 - 3.0) / 2.3);
+const float SIN_2 = 2.0 - cos((2.0 - 3.0) / 2.3);
+const float SIN_3 = 2.0 - cos((3.0 - 3.0) / 2.3);
+const float SIN_4 = 2.0 - cos((4.0 - 3.0) / 2.3);
+const float SIN_5 = 2.0 - cos((5.0 - 3.0) / 2.3);
+const float SIN_0 = 2.0 - cos((6.0 - 3.0) / 2.3);
 
 void fragment() {
 	vec2 pixel_dist = SCREEN_UV * screen_res;
