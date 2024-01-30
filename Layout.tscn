@@ -1,13 +1,24 @@
-[gd_scene load_steps=21 format=3 uid="uid://dg8mt57fuxxng"]
+[gd_scene load_steps=24 format=3 uid="uid://dg8mt57fuxxng"]
 
 [ext_resource type="Script" path="res://CameraPivot.gd" id="1_c1l2f"]
 [ext_resource type="Script" path="res://Scaling_preset.gd" id="2_kqtwt"]
+[ext_resource type="Shader" path="res://3DOutline.gdshader" id="2_tbnxy"]
 [ext_resource type="PackedScene" uid="uid://bgo7805p8aqfj" path="res://char scenes/player_body.tscn" id="3_vdyps"]
 [ext_resource type="Shader" path="res://pixelation.gdshader" id="4_4sw7b"]
 [ext_resource type="Shader" path="res://dotgrid.gdshader" id="5_34o2h"]
 [ext_resource type="Shader" path="res://gaussian_blur.gdshader" id="5_pm6he"]
 [ext_resource type="Shader" path="res://scanlines.gdshader" id="6_ckrpi"]
 [ext_resource type="Script" path="res://fpscounter.gd" id="7_vx3i4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v703p"]
+render_priority = 0
+shader = ExtResource("2_tbnxy")
+
+[sub_resource type="QuadMesh" id="QuadMesh_3lymu"]
+material = SubResource("ShaderMaterial_v703p")
+flip_faces = true
+size = Vector2(2, 2)
+center_offset = Vector3(0, 0, -0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rnfq"]
 albedo_color = Color(0.188235, 0.454902, 0.317647, 1)
@@ -121,6 +132,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 projection = 1
 fov = 37.8493
 size = 22.5
+
+[node name="PostProcess" type="MeshInstance3D" parent="3D Level Viewport/SubViewport/CameraPivot/Camera3D"]
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_3lymu")
+skeleton = NodePath("../../..")
 
 [node name="Scaling_preset" type="Node3D" parent="3D Level Viewport/SubViewport"]
 script = ExtResource("2_kqtwt")
