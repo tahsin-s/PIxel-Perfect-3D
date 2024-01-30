@@ -154,6 +154,7 @@ script = ExtResource("1_d85lo")
 [node name="PlayerAnimation" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.625, 0)
 pixel_size = 0.125
+billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_e5rso")
 animation = &"walk"
