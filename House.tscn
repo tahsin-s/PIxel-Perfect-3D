@@ -1,0 +1,27 @@
+[gd_scene load_steps=10 format=3 uid="uid://cb5grvulqiui2"]
+
+[ext_resource type="PackedScene" uid="uid://ct2hpvn8y70pf" path="res://models/Home_1/House.fbx" id="1_ehnhp"]
+[ext_resource type="Texture2D" uid="uid://dii2e5xm7cpfr" path="res://models/Home_1/Home-1 Textures/Door_Base_Color.png" id="2_jr6jf"]
+[ext_resource type="Texture2D" uid="uid://snt1x84akcjb" path="res://models/Home_1/Home-1 Textures/Wall_Base_Color.png" id="3_ah8h7"]
+[ext_resource type="Texture2D" uid="uid://bdrgqvr80t7ts" path="res://models/Home_1/Home-1 Textures/Window_Base_Color.png" id="4_k6xov"]
+[ext_resource type="Texture2D" uid="uid://pvv8qabiytij" path="res://models/Home_1/Home-1 Textures/Roof_Base_Color.png" id="5_wan2g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l1nel"]
+albedo_texture = ExtResource("2_jr6jf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4cr8"]
+albedo_texture = ExtResource("3_ah8h7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfx15"]
+albedo_texture = ExtResource("4_k6xov")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ce731"]
+albedo_texture = ExtResource("5_wan2g")
+
+[node name="Root Scene" instance=ExtResource("1_ehnhp")]
+
+[node name="RHouse" parent="RootNode" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_l1nel")
+surface_material_override/1 = SubResource("StandardMaterial3D_h4cr8")
+surface_material_override/2 = SubResource("StandardMaterial3D_pfx15")
+surface_material_override/3 = SubResource("StandardMaterial3D_ce731")
