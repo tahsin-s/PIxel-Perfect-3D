@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dg8mt57fuxxng"]
+[gd_scene load_steps=16 format=3 uid="uid://dg8mt57fuxxng"]
 
 [ext_resource type="Script" path="res://CameraPivot.gd" id="1_c1l2f"]
 [ext_resource type="Script" path="res://Scaling_preset.gd" id="2_kqtwt"]
 [ext_resource type="PackedScene" uid="uid://bgo7805p8aqfj" path="res://char scenes/player_body.tscn" id="3_vdyps"]
 [ext_resource type="Shader" path="res://pixelation.gdshader" id="4_4sw7b"]
+[ext_resource type="PackedScene" uid="uid://cb5grvulqiui2" path="res://House.tscn" id="4_liy4e"]
 [ext_resource type="Shader" path="res://dotgrid.gdshader" id="5_34o2h"]
 [ext_resource type="Script" path="res://fpscounter.gd" id="7_vx3i4"]
 
@@ -84,8 +85,11 @@ skeleton = NodePath("../Grass")
 shape = SubResource("ConvexPolygonShape3D_ij82x")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="3D Level Viewport/SubViewport/Scaling_preset"]
-transform = Transform3D(0.990002, -0.0612482, -0.127066, 0.141057, 0.429868, 0.891805, 0, -0.900812, 0.434209, 0, 0, 0)
+transform = Transform3D(-0.982789, -0.144089, -0.115611, -0.0787301, -0.239459, 0.967709, -0.16712, 0.960155, 0.223993, 0, 0, 0)
 shadow_enabled = true
+
+[node name="Root Scene" parent="3D Level Viewport/SubViewport/Scaling_preset" instance=ExtResource("4_liy4e")]
+transform = Transform3D(0.49, 0, 0, 0, 0.49, 0, 0, 0, 0.49, -27.7394, 0, 0)
 
 [node name="Pixelation Effect" type="CanvasLayer" parent="."]
 
