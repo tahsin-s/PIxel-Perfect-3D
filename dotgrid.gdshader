@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 uniform vec2 screen_res = vec2(1920, 1080);
 uniform vec2 game_res = vec2(320, 180);
-uniform float dark_level: hint_range(0.0, 1.0, 0.05) = 0.5;
+uniform float dark_level: hint_range(-1.0, 1.0, 0.05) = 0.5;
 uniform sampler2D screen_texture: hint_screen_texture, repeat_disable, filter_nearest_mipmap;
 
 const float SIN_1 = 2.0 - cos((1.0 - 3.0) / 2.3);
