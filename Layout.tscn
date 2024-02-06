@@ -57,7 +57,8 @@ script = ExtResource("1_c1l2f")
 target = NodePath("../Scaling_preset/PlayerBody")
 
 [node name="Camera3D" type="Camera3D" parent="3D Level Viewport/SubViewport/CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 36.3)
+fov = 36.2
 size = 22.5
 
 [node name="Scaling_preset" type="Node3D" parent="3D Level Viewport/SubViewport"]
