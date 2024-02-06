@@ -86,7 +86,7 @@ skeleton = NodePath("../Grass")
 shape = SubResource("ConvexPolygonShape3D_ij82x")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="3D Level Viewport/SubViewport/Scaling_preset"]
-transform = Transform3D(-0.982789, -0.144089, -0.115611, -0.0787301, -0.239459, 0.967709, -0.16712, 0.960155, 0.223993, 0, 0, 0)
+transform = Transform3D(-0.758135, 0.631042, -0.164374, 0, 0.252069, 0.967709, 0.652099, 0.733654, -0.191102, 0, 0, 0)
 shadow_enabled = true
 
 [node name="Root Scene" parent="3D Level Viewport/SubViewport/Scaling_preset" instance=ExtResource("4_liy4e")]
